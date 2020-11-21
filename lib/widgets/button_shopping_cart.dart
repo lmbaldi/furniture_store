@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:furniture_store/main.dart';
+import 'package:furniture_store/widgets/badge_cart.dart';
 
 class ButtonShoppingCart extends StatelessWidget {
   @override
@@ -21,11 +23,26 @@ class ButtonShoppingCart extends StatelessWidget {
           right: 20,
           left: 20,
         ),
-        child: Image(
-          height: 35,
-          image: AssetImage('utilities/assets/icons/carrinho.png'),
-        ),
+        child: _showBadgeCart(),
       ),
+    );
+  }
+
+  _showBadgeCart(){
+    if(Start.itensCart.length > 0){
+      return Stack(
+          children: [
+            Image(
+              height: 35,
+              image: AssetImage('utilities/assets/icons/carrinho.png'),
+            ),
+            BadgeCart(),
+          ]
+      );
+    }
+    return Image(
+      height: 35,
+      image: AssetImage('utilities/assets/icons/carrinho.png'),
     );
   }
 }

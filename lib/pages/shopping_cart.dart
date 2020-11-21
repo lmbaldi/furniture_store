@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_store/widgets/app_bar_custom.dart';
+import 'package:furniture_store/widgets/list_cart.dart';
 
-class ShoppingCart extends StatelessWidget {
+class ShoppingCart extends StatefulWidget {
+  @override
+  _ShoppingCartState createState() => _ShoppingCartState();
+}
+
+class _ShoppingCartState extends State<ShoppingCart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +16,13 @@ class ShoppingCart extends StatelessWidget {
         title: "ShoppingCart",
         isPageShoppingCart: true,
       ),
-      body: Text("We are in the shopping cart"),
+      body: ListCart(
+        update: update
+      ),
     );
+  }
+
+  update(){
+    setState((){});
   }
 }

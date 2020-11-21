@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_store/color_pallete.dart';
+import 'package:furniture_store/models/item_cart.dart';
 import 'package:furniture_store/pages/shopping_cart.dart';
 import 'package:furniture_store/widgets/grid_products.dart';
 import 'package:furniture_store/widgets/app_bar_custom.dart';
@@ -18,17 +19,20 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorPalette().lilac,
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Alata',
-            fontWeight: FontWeight.bold,
-            color:Colors.black
-          ),
+              fontSize: 20,
+              fontFamily: 'Alata',
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
           headline2: TextStyle(
               fontSize: 20,
               fontFamily: 'Alata',
               fontWeight: FontWeight.bold,
-              color:Colors.white
-          ),
+              color: Colors.white),
+          headline3: TextStyle(
+              fontSize: 16,
+              fontFamily: 'Alata',
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -41,6 +45,8 @@ class MyApp extends StatelessWidget {
 }
 
 class Start extends StatelessWidget {
+  static List<ItemCart> itensCart = List();
+
   final List furnitures = [
     {
       "titulo": "Mesa",
