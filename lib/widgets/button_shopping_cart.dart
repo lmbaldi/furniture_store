@@ -2,20 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:furniture_store/main.dart';
 import 'package:furniture_store/widgets/badge_cart.dart';
 
-class ButtonShoppingCart extends StatelessWidget {
+class ButtonShoppingCart extends StatefulWidget {
+  @override
+  _ButtonShoppingCartState createState() => _ButtonShoppingCartState();
+}
+
+class _ButtonShoppingCartState extends State<ButtonShoppingCart> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.pushNamed(context, "/shopping_cart");
+      onTap: () {
+        Navigator.pushNamed(context, "/shopping_cart").then(
+          (value) => setState(() {}),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(100),
-            bottomLeft: Radius.circular(100)
-          ),
+              topLeft: Radius.circular(100), bottomLeft: Radius.circular(100)),
         ),
         alignment: Alignment.centerRight,
         height: 40.0,
@@ -28,17 +33,15 @@ class ButtonShoppingCart extends StatelessWidget {
     );
   }
 
-  _showBadgeCart(){
-    if(Start.itensCart.length > 0){
-      return Stack(
-          children: [
-            Image(
-              height: 35,
-              image: AssetImage('utilities/assets/icons/carrinho.png'),
-            ),
-            BadgeCart(),
-          ]
-      );
+  _showBadgeCart() {
+    if (Start.itensCart.length > 0) {
+      return Stack(children: [
+        Image(
+          height: 35,
+          image: AssetImage('utilities/assets/icons/carrinho.png'),
+        ),
+        BadgeCart(),
+      ]);
     }
     return Image(
       height: 35,
