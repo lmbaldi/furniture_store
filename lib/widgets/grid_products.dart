@@ -5,9 +5,9 @@ import 'package:furniture_store/widgets/grid_product_item.dart';
 class GridProducts extends StatelessWidget {
 
   final furnitures;
+  final Function update;
 
-
-  GridProducts({this.furnitures});
+  GridProducts({this.furnitures, this.update}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,7 @@ class GridProducts extends StatelessWidget {
         final movel = Movel.fromJson(furnitures[index]);
         return GridProductItem(
           movel: movel,
+          update: update,
         );
       },
     );
