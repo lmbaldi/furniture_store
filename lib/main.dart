@@ -19,20 +19,33 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorPalette().lilac,
         textTheme: TextTheme(
           headline1: TextStyle(
-              fontSize: 20,
-              fontFamily: 'Alata',
-              fontWeight: FontWeight.bold,
-              color: Colors.black),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
           headline2: TextStyle(
-              fontSize: 20,
-              fontFamily: 'Alata',
-              fontWeight: FontWeight.bold,
-              color: Colors.white),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
           headline3: TextStyle(
-              fontSize: 16,
-              fontFamily: 'Alata',
-              fontWeight: FontWeight.bold,
-              color: Colors.black),
+            fontSize: 16,
+            fontFamily: 'Alata',
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          headline4: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Alata',
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          headline5: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Alata',
+            fontWeight: FontWeight.w200,
+            color: Colors.black,
+          ),
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -44,9 +57,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Start extends StatelessWidget {
+class Start extends StatefulWidget {
   static List<ItemCart> itensCart = List();
 
+  @override
+  _StartState createState() => _StartState();
+}
+
+class _StartState extends State<Start> {
   final List furnitures = [
     {
       "titulo": "Mesa",
@@ -138,10 +156,15 @@ class Start extends StatelessWidget {
           ),
           Flexible(
               child: GridProducts(
+                update: update,
             furnitures: furnitures,
           )),
         ],
       ),
     );
+  }
+
+  void update(){
+    setState(() {});
   }
 }
