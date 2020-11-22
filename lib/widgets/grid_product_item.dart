@@ -5,11 +5,18 @@ import 'package:furniture_store/widgets/grid_product_image_item.dart';
 import 'package:furniture_store/widgets/grid_product_title_item.dart';
 import 'package:furniture_store/widgets/grid_product_gradient_item.dart';
 
-class GridProductItem extends StatelessWidget {
+class GridProductItem extends StatefulWidget {
+
   final Movel movel;
+  final Function update;
 
-  GridProductItem({this.movel});
+  GridProductItem({this.movel, this.update});
 
+  @override
+  _GridProductItemState createState() => _GridProductItemState();
+}
+
+class _GridProductItemState extends State<GridProductItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -17,9 +24,9 @@ class GridProductItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Details(movel: movel),
-          ),
-        );
+            builder: (context) => Details(movel: widget.movel),
+          )
+        ).then((value) => widget.update());
       },
       child: Container(
         decoration: BoxDecoration(
@@ -37,9 +44,9 @@ class GridProductItem extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              GridProductImageItem(image: movel.foto),
+              GridProductImageItem(image: widget.movel.foto),
               GridProductGradientItem(),
-              GridProductTitleItem(title: movel.titulo)
+              GridProductTitleItem(title: widget.movel.titulo)
             ],
           ),
         ),
